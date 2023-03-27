@@ -1,0 +1,203 @@
+main section{
+    margin-top: 5px;
+    min-width: 600px;
+
+    background-color: white;
+}
+
+main .small-section{
+    padding: 0 20%;
+}
+
+main .big-section{
+    width: 100%;
+    height: 700px;
+}
+
+
+.section-10{
+    min-width: 5%;
+    max-width: 10%;
+}
+
+.section-30{
+    min-width: 25%;
+    max-width: 30%;
+}
+
+.section-40{
+    min-width: 35%;
+    max-width: 40%;
+}
+
+.section-item{
+    padding: 5px 7px;
+    margin: 5px 0;
+
+    max-height: 200px;
+}
+
+.section-item::after{
+    position: absolute;
+    top: 0;
+    content: ' ';
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.text-section{
+    flex: 1;
+    max-width: 900px;
+    min-width: 300px;
+
+    font-size: 1.2rem;
+
+    margin-right: 25px;
+}
+
+.image-section{
+    min-width: 300px;
+    max-height: inherit;
+}
+
+.image-section img{
+    max-height: inherit;
+    max-width: 300px;
+    object-fit: contains;
+    object-position: center;
+}
+
+main .separator{
+    padding: 5px 0;
+    height: 15px;
+    background-color: var(--primary-color);
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main .separator::after{
+    display: block;
+    position: absolute;
+
+    width: 40%;
+    height: 4px;
+    content: ' ';
+
+    background-color: black;
+    border-radius: 15px;
+
+    animation: stretch 3s linear 0s infinite alternate none;
+}
+
+.map-selector{
+    position: relative;
+
+    width: 100%;
+    height: inherit;
+
+    background-image: url("../../images/cartina_curdi.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.map-selector .overlay{
+    position: absolute;
+
+    width: inherit;
+
+    width: 100%;
+    height: inherit;
+
+    background-color: rgba(0, 0, 0, .7);
+
+    z-index: 2;
+
+    transition: background-color .8s;
+}
+
+.map-selector .overlay:hover{
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.map-selector .selector{ /* 1.84 / 5 */
+    position: absolute;
+
+    width: 1%;
+    height: 2.72%;
+
+    background-color: rgba(0, 0, 0, .2);
+
+    z-index: 3;
+
+    border-radius: 100%;
+
+    border: 4px solid rgba(255, 255, 255, .3);
+
+    animation: stretch-selectors 2s linear 0s infinite alternate none;
+}
+
+.map-selector .selector::after{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+
+    width: 20%;
+    height: 20%;
+    content: '';
+
+    background-color: rgba(255, 255, 255, .3);;
+    border-radius: 100%;
+}
+
+.map-selector .selector:hover{
+    cursor: pointer;
+}
+
+
+.map-selector .selector:hover ~ .overlay{
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.map-selector #turchi{
+    top: 40%;
+    left: 40%;
+}
+
+.map-selector #siria{
+    top: 60%;
+    left: 35%;
+}
+
+.map-selector #iran{
+    top: 65%;
+    left: 55%;
+}
+
+.map-selector #iraq{
+    top: 67%;
+    left: 47%;
+}
+
+
+@keyframes stretch {
+    from{
+        width: 50%;
+    }
+    to{
+        width: 65%;
+    }
+}
+
+@keyframes stretch-selectors {
+    from{
+        transform: scale(1,1);
+    }
+    to{
+        transform: scale(0.5, 0.5);
+    }
+}
