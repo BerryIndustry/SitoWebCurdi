@@ -13,6 +13,8 @@
 
     --font-style-default: 'Signika', sans-serif;
     --font-style-special-titles: 'Audiowide', cursive;
+
+    --image-selector-color: red;
 }
 
 body{

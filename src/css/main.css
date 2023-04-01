@@ -115,7 +115,7 @@ main .separator::after{
 
     background-color: rgba(0, 0, 0, .7);
 
-    z-index: 2;
+    z-index: 1;
 
     transition: background-color .8s;
 }
@@ -127,40 +127,132 @@ main .separator::after{
 .map-selector .selector{ /* 1.84 / 5 */
     position: absolute;
 
-    width: 1%;
-    height: 2.72%;
+    width: 24px;
+    height: 24px;
 
-    background-color: rgba(0, 0, 0, .2);
+    background-color: var(--image-selector-color);
 
-    z-index: 3;
+    z-index: 2;
 
     border-radius: 100%;
+    
+    transition: transform .5s;
 
-    border: 4px solid rgba(255, 255, 255, .3);
-
-    animation: stretch-selectors 2s linear 0s infinite alternate none;
-}
-
-.map-selector .selector::after{
-    position: absolute;
-    top: 40%;
-    left: 40%;
-
-    width: 20%;
-    height: 20%;
-    content: '';
-
-    background-color: rgba(255, 255, 255, .3);;
-    border-radius: 100%;
+    animation: pulse-selectors 3s linear .3s infinite alternate none;
 }
 
 .map-selector .selector:hover{
     cursor: pointer;
+    transform: scale(1.5, 1.5);
+
+    animation: none;
 }
 
+.map-selector .selector:hover::after{
+    animation: none;
+}
+
+.map-selector .selector::before{
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 18px;
+    height: 18px;
+
+    background-color: black;
+
+    content: ' ';
+
+    border-radius: 100%;
+
+    z-index: 3;
+}
+
+.map-selector .selector::after{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    width: 4px;
+    height: 4px;
+    content: '';
+
+    background-color: var(--image-selector-color);
+    border-radius: 100%;
+
+    z-index: 4;
+    
+    transition: transform .5s; 
+    
+    animation: pulse-selectors 3s linear .3s infinite alternate none;
+}
 
 .map-selector .selector:hover ~ .overlay{
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.map-selector .selector .hidden-hover{
+    position: absolute;
+    top: -70px;
+    left: -250px;
+
+    width: 200px;
+
+    display: none;
+
+    cursor: default;
+}
+
+.map-selector .selector .hidden-hover:hover{
+    background-color: rgba(255,255, 255, .1);
+}
+
+.map-selector .selector .hidden-hover .info .title{
+    margin-top: 15px;
+}
+
+.map-selector .selector .hidden-hover .lines{
+    position: absolute;
+    top: 32px;
+    left: -12px;
+
+    background-color: var(--image-selector-color);
+
+    width: 220px;
+    height: 1px;
+
+    border-collapse: collapse;
+}
+
+.map-selector .selector .hidden-hover .lines::before{
+    position: absolute;
+    left: 205px;
+    top: 23px;
+    
+    width: 50px;
+    height: 1.2px;
+
+    content: '';
+    background-color: var(--image-selector-color);
+
+    transform: rotate(65deg);
+    
+    border-collapse: collapse;
+}
+
+.map-selector .selector .hidden-hover .lines::after{
+    position: absolute;
+    top: 46px;
+    left: 240px;
+
+    width: 18px;
+    height: 1.2px;
+
+    content: '';
+    background-color: var(--image-selector-color);
+    
+    border-collapse: collapse;
 }
 
 .map-selector #turchi{
@@ -178,10 +270,46 @@ main .separator::after{
     left: 55%;
 }
 
+.map-selector #iran .hidden-hover{
+    left: 74px;
+}
+
+.map-selector #iran .hidden-hover .lines::before{
+    transform: rotate(-65deg);
+    left: -35px;
+}
+
+.map-selector #iran .hidden-hover .lines::after{
+    left: -39px;
+}
+
+
 .map-selector #iraq{
     top: 67%;
     left: 47%;
 }
+
+.map-selector #iraq .hidden-hover{
+    top: -245px;
+    left: 53px;
+}
+
+.map-selector #iraq .hidden-hover .lines::before{
+    transform: rotate(90deg);
+
+    width: 220px;
+
+    left: -110px;
+    top: 110px;
+}
+
+.map-selector #iraq .hidden-hover .lines::after{
+    top: 220px;
+    left: -18px;
+}
+
+
+
 
 
 @keyframes stretch {
@@ -193,11 +321,21 @@ main .separator::after{
     }
 }
 
-@keyframes stretch-selectors {
-    from{
-        transform: scale(1,1);
+@keyframes pulse-selectors {
+    0%{
+        background-color: var(--image-selector-color);
     }
-    to{
-        transform: scale(0.5, 0.5);
+    50%{
+        background-color: white;
+    }
+
+    60%{
+        background-color: var(--image-selector-color);
+    }
+    70%{
+        background-color: white;
+    }
+    100%{
+        background-color: var(--image-selector-color);
     }
 }
